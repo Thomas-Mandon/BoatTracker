@@ -1,6 +1,11 @@
 package com.example.m17006795.boattracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ContainerShip {
+    private static List<ContainerShip> listShips = new ArrayList<>();
+
     private int id;
     private String name;
     private String captainName;
@@ -19,5 +24,15 @@ public class ContainerShip {
         this.port = port;
         this.type = type;
         this.containers = containers;
+
+        listShips.add(this);
+    }
+
+    public void destroyShip() {
+        listShips.remove(this);
+    }
+
+    public List<ContainerShip> getShips () {
+        return listShips;
     }
 }

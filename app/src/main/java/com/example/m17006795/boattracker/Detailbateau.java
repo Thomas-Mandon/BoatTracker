@@ -10,4 +10,5 @@ public class Detailbateau extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailbateau);
     }
+
 }

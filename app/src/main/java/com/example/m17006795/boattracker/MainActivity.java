@@ -12,19 +12,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new ContainerShipBuilder().setName("La Voix").setCaptainName("John Adams").build();
-        new ContainerShipBuilder().setName("Ursa Minor").setCaptainName("John Quincy Adams").build();
-        new ContainerShipBuilder().setName("Sirus").setCaptainName("Harold Burr").build();
+        ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
+
+        new ContainerShipBuilder().setName("La Voix").setCaptainName("John Adams").setType(petrolier).build();
+        new ContainerShipBuilder().setName("Ursa Minor").setCaptainName("John Quincy Adams").setType(petrolier).build();
+        new ContainerShipBuilder().setName("Sirus").setCaptainName("Harold Burr").setType(petrolier).build();
     }
 
     public void goToShipList(View view) {
         Intent listIntent = new Intent(this, ShipListActivity.class);
         startActivity(listIntent);
     }
-
-    public void detailsbateau (View v) {
-        Intent details = new Intent(this, Detailbateau.class);
-        startActivity(details);
-    }
-
 }

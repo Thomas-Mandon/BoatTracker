@@ -1,6 +1,8 @@
 package com.example.m17006795.boattracker;
 
-public class Container {
+import java.io.Serializable;
+
+public class Container implements Serializable {
     private int id;
     private int length;
     private int height;

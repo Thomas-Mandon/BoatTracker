@@ -7,7 +7,7 @@ public class ContainerShipBuilder {
     private float latitude = 0;
     private float longitude = 0;
     private Port port = new Port(0, "", 0, 0);
-    private ContainerShipType type = new ContainerShipType(0, 0, 0, 0);
+    private ContainerShipType type = new ContainerShipType(0, "", 0, 0, 0);
     private Container[] containers = new Container[50];
 
     public ContainerShip build() {

@@ -1,8 +1,9 @@
 package com.example.m17006795.boattracker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ContainerShip {
+public class ContainerShip implements Serializable {
     private static ArrayList<ContainerShip> listShips = new ArrayList<>();
 
     private int id;
@@ -41,5 +42,9 @@ public class ContainerShip {
 
     public static ArrayList<ContainerShip> getShips () {
         return listShips;
+    }
+
+    public ContainerShipType getType() {
+        return type;
     }
 }

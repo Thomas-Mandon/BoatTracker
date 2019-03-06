@@ -26,8 +26,6 @@ public class ShipListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Toast toast = Toast.makeText(ShipListActivity.this, ((TextView) view.findViewById(R.id.shipName)).getText(), Toast.LENGTH_SHORT);
-                toast.show();*/
                 Intent details = new Intent(ShipListActivity.this, DetailsShipActivity.class);
                 details.putExtra("Bateau", shipAdapter.getItem(position));
                 startActivity(details);

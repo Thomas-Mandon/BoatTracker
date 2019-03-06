@@ -14,4 +14,12 @@ public class Port implements Serializable {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
 }

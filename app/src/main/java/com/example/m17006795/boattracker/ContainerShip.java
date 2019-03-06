@@ -47,4 +47,16 @@ public class ContainerShip implements Serializable {
     public ContainerShipType getType() {
         return type;
     }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public Port getPort() {
+        return port;
+    }
 }

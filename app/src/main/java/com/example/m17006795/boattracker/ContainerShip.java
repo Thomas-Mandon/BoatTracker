@@ -1,10 +1,9 @@
 package com.example.m17006795.boattracker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ContainerShip {
-    private static List<ContainerShip> listShips = new ArrayList<>();
+    private static ArrayList<ContainerShip> listShips = new ArrayList<>();
 
     private int id;
     private String name;
@@ -28,11 +27,19 @@ public class ContainerShip {
         listShips.add(this);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getCaptainName() {
+        return captainName;
+    }
+
     public void destroyShip() {
         listShips.remove(this);
     }
 
-    public List<ContainerShip> getShips () {
+    public static ArrayList<ContainerShip> getShips () {
         return listShips;
     }
 }

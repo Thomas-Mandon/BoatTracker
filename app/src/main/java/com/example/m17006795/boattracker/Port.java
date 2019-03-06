@@ -5,4 +5,11 @@ public class Port {
     private String name;
     private float latitude;
     private float longitude;
+
+    public Port(int id, String name, float latitude, float longitude) {
+        this.id = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

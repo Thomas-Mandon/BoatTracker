@@ -21,4 +21,10 @@ public class MainActivity extends AppCompatActivity {
         Intent listIntent = new Intent(this, ShipListActivity.class);
         startActivity(listIntent);
     }
+
+    public void detailsbateau (View v) {
+        Intent details = new Intent(this, Detailbateau.class);
+        startActivity(details);
+    }
+
 }

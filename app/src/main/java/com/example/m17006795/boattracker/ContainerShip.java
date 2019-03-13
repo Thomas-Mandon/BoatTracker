@@ -83,4 +83,16 @@ public class ContainerShip implements Serializable {
     public void setType(ContainerShipType type) {
         this.type = type;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public ContainerShip searchShip (ContainerShip ship) {
+        for (ContainerShip cs : listShips)
+            if (ship.getId() == cs.getId())
+                return cs;
+
+        return ship;
+    }
 }

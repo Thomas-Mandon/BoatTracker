@@ -1,7 +1,9 @@
 package com.example.m17006795.boattracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,4 +34,8 @@ public class DetailsShipActivity extends AppCompatActivity {
                 toast.show();*/
     }
 
+    public void goToModifShip(View view) {
+        Intent listIntent = new Intent(this, ModifShip.class);
+        startActivity(listIntent);
+    }
 }

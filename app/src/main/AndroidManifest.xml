@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ShipListActivity" />
-        <activity android:name=".DetailsShipActivity"></activity>
+        <activity android:name=".DetailsShipActivity" />
+        <activity android:name=".ModifShip"></activity>
     </application>
 
 </manifest>

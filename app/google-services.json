@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "523743174033",
+    "firebase_url": "https://gestionbateaux.firebaseio.com",
+    "project_id": "gestionbateaux",
+    "storage_bucket": "gestionbateaux.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523743174033:android:d2fa0040109b6369",
+        "android_client_info": {
+          "package_name": "com.example.m17006795.boattracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523743174033-2iabhjp33c81882bme1h9kqdf4oufjoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.m17006795.boattracker",
+            "certificate_hash": "58c9511043e18e28b47f1640f8f6704d85ef049d"
+          }
+        },
+        {
+          "client_id": "523743174033-sfis6mn99jp0fmc4brhpn7948cvfdlpu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVPNSMLFfiSH8tpGW-uX3jOPl_VVtlHtw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523743174033-sfis6mn99jp0fmc4brhpn7948cvfdlpu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

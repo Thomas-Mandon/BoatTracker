@@ -1,12 +1,9 @@
 package com.example.m17006795.boattracker;
 
-import android.location.Location;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +56,12 @@ public class DetailsShipActivity extends AppCompatActivity {
     public void goToModifShip(View view) {
         Intent intent = new Intent(this, ModifShip.class);
         intent.putExtra("Bateau",bateau);
+        startActivity(intent);
+    }
+
+    public void goToMap(View view) {
+        Intent intent = new Intent(this, ShipLocationActivity.class);
+        intent.putExtra("Bateau", bateau);
         startActivity(intent);
     }
 }

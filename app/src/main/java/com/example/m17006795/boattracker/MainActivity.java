@@ -14,9 +14,23 @@ public class MainActivity extends AppCompatActivity {
 
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 
-        new ContainerShipBuilder().setName("La Voix").setCaptainName("John Adams").setType(petrolier).build();
-        new ContainerShipBuilder().setName("Ursa Minor").setCaptainName("John Quincy Adams").setType(petrolier).build();
-        new ContainerShipBuilder().setName("Sirus").setCaptainName("Harold Burr").setType(petrolier).build();
+        new ContainerShipBuilder().setName("La Voix")
+                .setCaptainName("John Adams")
+                .setType(petrolier)
+                .setLatitude(3.66f)
+                .setLongitude(3.66f)
+                .setPort(new Port(0, "Pearl Harbor", 14.2f, 12.6f))
+                .build();
+        new ContainerShipBuilder()
+                .setName("Ursa Minor")
+                .setCaptainName("John Quincy Adams")
+                .setType(petrolier)
+                .build();
+        new ContainerShipBuilder()
+                .setName("Sirus")
+                .setCaptainName("Harold Burr")
+                .setType(petrolier)
+                .build();
     }
 
     public void goToShipList(View view) {

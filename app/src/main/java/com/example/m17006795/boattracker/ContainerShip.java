@@ -59,4 +59,28 @@ public class ContainerShip implements Serializable {
     public Port getPort() {
         return port;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCaptainName(String captainName) {
+        this.captainName = captainName;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setPort(Port port) {
+        this.port = port;
+    }
+
+    public void setType(ContainerShipType type) {
+        this.type = type;
+    }
 }

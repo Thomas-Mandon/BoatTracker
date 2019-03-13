@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -42,8 +43,14 @@ public class ShipLocationActivity extends FragmentActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //Marqueur bateau
         LatLng posBateau = new LatLng(bateau.getLatitude(), bateau.getLongitude());
         mMap.addMarker(new MarkerOptions().position(posBateau).title(bateau.getName()));
+
+        //Marqueur port d'origine
+        LatLng posPort = new LatLng(bateau.getPort().getLatitude(), bateau.getPort().getLongitude());
+        mMap.addMarker(new MarkerOptions().position(posPort).title("Port d'origine : " + bateau.getPort().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(posBateau));
     }
 }

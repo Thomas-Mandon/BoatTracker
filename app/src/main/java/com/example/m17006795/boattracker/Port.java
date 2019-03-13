@@ -22,4 +22,8 @@ public class Port implements Serializable {
     public float getLongitude() {
         return longitude;
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -23,6 +23,9 @@ public class DetailsShipActivity extends AppCompatActivity {
         ContainerShip bateau = (ContainerShip) getIntent().getSerializableExtra("Bateau");
         ((TextView) findViewById(R.id.shipName)).setText(new StringBuilder("Nom : ").append(bateau.getName()));
         ((TextView) findViewById(R.id.shipType)).setText(new StringBuilder("Type : ").append(bateau.getType().getName()));
+        ((TextView) findViewById(R.id.shipCapitaine)).setText(new StringBuilder("Capitaine : ").append(bateau.getCaptainName()));
+        ((TextView) findViewById(R.id.shipPosition)).setText(new StringBuilder("Position: latitude ").append(bateau.getLatitude()).append(" et longitude ").append(bateau.getLongitude()));
+
     }
 
     public void calculDist () {

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class DetailsShipActivity extends AppCompatActivity {
 
     private ContainerShip bateau;
@@ -21,7 +23,6 @@ public class DetailsShipActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detailship);
         bateau = (ContainerShip) getIntent().getSerializableExtra("Bateau");
         creationDetails();
-        getDistance();
     }
 
     public void creationDetails () {
@@ -30,12 +31,26 @@ public class DetailsShipActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.shipType)).setText(new StringBuilder("Type : ").append(bateau.getType().getName()));
     }
 
-    public void getDistance() {
+    public void getDistance(View view) {
 
         Button button = findViewById(R.id.calculDistance);
 
-        /*Toast toast = Toast.makeText(DetailsShipActivity.this, , Toast.LENGTH_SHORT);
-                toast.show();*/
+        Double distance = distance(bateau.getLatitude(), bateau.getPort().getLatitude(), bateau.getLongitude(), bateau.getPort().getLongitude());
+        Toast toast = Toast.makeText(DetailsShipActivity.this, String.format(Locale.getDefault(), "%.2f", distance) + " km", Toast.LENGTH_SHORT);
+                toast.show();
+    }
+
+    public static double distance(double lat1, double lat2, double lon1, double lon2) {
+
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c; // kilometers
     }
 
     public void goToModifShip(View view) {

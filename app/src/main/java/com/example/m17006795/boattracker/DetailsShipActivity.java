@@ -39,7 +39,8 @@ public class DetailsShipActivity extends AppCompatActivity {
     }
 
     public void goToModifShip(View view) {
-        Intent listIntent = new Intent(this, ModifShip.class);
-        startActivity(listIntent);
+        Intent intent = new Intent(this, ModifShip.class);
+        intent.putExtra("Bateau",bateau);
+        startActivity(intent);
     }
 }

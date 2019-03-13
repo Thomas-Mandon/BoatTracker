@@ -38,7 +38,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".BoatLocationActivity"
+            android:name=".ShipLocationActivity"
             android:label="@string/title_activity_boat_location"></activity>
         <activity android:name=".ModifShip"></activity>
     </application>

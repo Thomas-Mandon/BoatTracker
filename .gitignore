@@ -59,8 +59,8 @@ gen-external-apklibs
 obj/
 
 # IntelliJ IDEA
-*.iml
-*.iws
+# *.iml
+# *.iws
 /out/
 
 # User-specific configurations

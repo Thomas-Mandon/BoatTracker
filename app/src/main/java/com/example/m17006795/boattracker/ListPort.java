@@ -9,12 +9,12 @@ public class ListPort {
         return listPort;
     }
 
-    public Port searchPortByName (Port port) {
+    public Port searchPortByName (String NamePort) {
         for (Port p : listPort)
-            if (port.getName() == port.getName())
+            if (p.getName() == NamePort)
                 return p;
 
-        return port;
+        return null;
     }
 
     public Port searchPortById (Port port) {

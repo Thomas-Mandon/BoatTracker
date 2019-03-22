@@ -35,7 +35,9 @@ public class ModifShip extends AppCompatActivity {
     public void valider (View view) {
         bateau.setName(((EditText) findViewById(R.id.editTextName)).getText().toString());
         bateau.setCaptainName(((EditText) findViewById(R.id.editTextCapitaine)).getText().toString());
-        bateau.getPort().setName(((EditText) findViewById(R.id.editTextPort)).getText().toString());
+        String namePort = (((EditText) findViewById(R.id.editTextPort)).getText().toString());
+
+        //bateau.getPort().setName(((EditText) findViewById(R.id.editTextPort)).getText().toString());
 
         String latitude = (((EditText) findViewById(R.id.editTextLat)).getText().toString());
         bateau.setLatitude(Float.parseFloat(latitude));

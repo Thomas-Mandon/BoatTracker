@@ -13,6 +13,7 @@ public class Port implements Serializable {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        ListPort.getListPort().add(this);
     }
 
     public float getLatitude() {
@@ -26,4 +27,18 @@ public class Port implements Serializable {
     public String getName() {
         return name;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 }

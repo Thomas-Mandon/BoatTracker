@@ -11,6 +11,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class ShipLocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -43,14 +45,20 @@ public class ShipLocationActivity extends FragmentActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Marqueur bateau
-        LatLng posBateau = new LatLng(bateau.getLatitude(), bateau.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(posBateau).title(bateau.getName()));
+        for (ContainerShip chaqueBateau : ContainerShip.getShips()) {
+            //Marqueur bateau. "chaqueBateau" représente chacun des bateaux de la liste des bateaux
+            LatLng posBateau = new LatLng(chaqueBateau.getLatitude(), chaqueBateau.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(posBateau).title(bateau.getName()));
+        }
 
-        //Marqueur port d'origine
-        LatLng posPort = new LatLng(bateau.getPort().getLatitude(), bateau.getPort().getLongitude());
-        mMap.addMarker(new MarkerOptions().position(posPort).title("Port d'origine : " + bateau.getPort().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        for (Port chaquePort : ListPort.getListPort()) {
+            //Marqueur port. Même principe pour "chaquePort" et la liste des ports.
+            LatLng posPort = new LatLng(chaquePort.getLatitude(), chaquePort.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(posPort).title("Port d'origine : " + chaquePort.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(posBateau));
+        LatLng posBateauAffiche = new LatLng(bateau.getLatitude(), bateau.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(posBateauAffiche));
+
     }
 }

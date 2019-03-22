@@ -44,9 +44,11 @@ public class ModifShip extends AppCompatActivity {
         String longitude = (((EditText) findViewById(R.id.editTextLong)).getText().toString());
         bateau.setLongitude(Float.parseFloat(longitude));
 
-        Intent intent = new Intent(ModifShip.this, DetailsShipActivity.class);
-        intent.putExtra("Bateau",bateau);
-        startActivity(intent);
+        if (ListPort.searchPortByName(namePort) != null) {
+            Intent intent = new Intent(ModifShip.this, DetailsShipActivity.class);
+            intent.putExtra("Bateau", bateau);
+            startActivity(intent);
+        }
     }
 
     public void cancel (View view) {

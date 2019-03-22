@@ -9,7 +9,7 @@ public class ListPort {
         return listPort;
     }
 
-    public Port searchPortByName (String NamePort) {
+    public static Port searchPortByName (String NamePort) {
         for (Port p : listPort)
             if (p.getName() == NamePort)
                 return p;
@@ -17,7 +17,7 @@ public class ListPort {
         return null;
     }
 
-    public Port searchPortById (Port port) {
+    public static Port searchPortById (Port port) {
         for (Port p : listPort)
             if (port.getId() == port.getId())
                 return p;

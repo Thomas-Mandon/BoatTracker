@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class Port implements Serializable {
     private int id;
     private String name;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
 
-    public Port(int id, String name, float latitude, float longitude) {
+    public Port(int id, String name, double latitude, double longitude) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
@@ -16,11 +16,11 @@ public class Port implements Serializable {
         ListPort.getListPort().add(this);
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 

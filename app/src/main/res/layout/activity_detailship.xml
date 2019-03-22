@@ -59,11 +59,22 @@
         app:layout_constraintTop_toBottomOf="@+id/shipCapitaine" />
 
     <Button
-        android:id="@+id/envoyerData"
+        android:id="@+id/createShip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="createShip"
         android:text="Ajouter a la base"
-        android:onClick="createShip"/>
+        app:layout_constraintBottom_toTopOf="@+id/calculDistance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
 
     <Button
         android:id="@+id/calculDistance"
@@ -118,5 +129,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/voirCarte"
         app:layout_constraintVertical_bias="0.191" />
+
+    <Button
+        android:id="@+id/retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="fillShipList"
+        android:text="Retour"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="446dp" />
 
 </android.support.constraint.ConstraintLayout>

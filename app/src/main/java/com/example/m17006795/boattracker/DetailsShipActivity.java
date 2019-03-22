@@ -35,9 +35,19 @@ public class DetailsShipActivity extends AppCompatActivity {
 
         Button button = findViewById(R.id.calculDistance);
 
-        Double distance = distance(bateau.getLatitude(), bateau.getPort().getLatitude(), bateau.getLongitude(), bateau.getPort().getLongitude());
-        Toast toast = Toast.makeText(DetailsShipActivity.this, String.format(Locale.getDefault(), "%.2f", distance) + " km", Toast.LENGTH_SHORT);
-                toast.show();
+        if (bateau.getPort() == null) {
+            Toast toastErr = Toast.makeText(DetailsShipActivity.this, "Le port n'existe pas", Toast.LENGTH_SHORT);
+            toastErr.show();
+        }
+
+        else {
+            Double distance = distance(bateau.getLatitude(), bateau.getPort().getLatitude(), bateau.getLongitude(), bateau.getPort().getLongitude());
+            Toast toast = Toast.makeText(DetailsShipActivity.this, String.format(Locale.getDefault(), "%.2f", distance) + " km", Toast.LENGTH_SHORT);
+            toast.show();
+
+        }
+
+
     }
 
     public static double distance(double lat1, double lat2, double lon1, double lon2) {

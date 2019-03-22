@@ -37,11 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
                                 Log.d(TAG, "Bateaux : " + document.getData());
                             }
-                        }
-                        else {
+                        } else {
                             Log.w(TAG, "No such document", task.getException());
-                            }
                         }
+                    }
                 });
 
         firestore.collection("ports")
@@ -76,26 +75,28 @@ public class MainActivity extends AppCompatActivity {
 
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 
-        new ContainerShipBuilder().setName("La Voix")
-                .setId(0)
-                .setCaptainName("John Adams")
-                .setType(petrolier)
-                .setLatitude(3.66f)
-                .setLongitude(3.66f)
-                .setPort("Pearl Harbor")
-                .build();
-        new ContainerShipBuilder()
-                .setId(1)
-                .setName("Ursa Minor")
-                .setCaptainName("John Quincy Adams")
-                .setType(petrolier)
-                .build();
-        new ContainerShipBuilder()
-                .setId(2)
-                .setName("Sirus")
-                .setCaptainName("Harold Burr")
-                .setType(petrolier)
-                .build();
+        if (ContainerShip.getShips().isEmpty()) {
+            new ContainerShipBuilder().setName("La Voix")
+                    .setId(0)
+                    .setCaptainName("John Adams")
+                    .setType(petrolier)
+                    .setLatitude(3.66f)
+                    .setLongitude(3.66f)
+                    .setPort("Pearl Harbor")
+                    .build();
+            new ContainerShipBuilder()
+                    .setId(1)
+                    .setName("Ursa Minor")
+                    .setCaptainName("John Quincy Adams")
+                    .setType(petrolier)
+                    .build();
+            new ContainerShipBuilder()
+                    .setId(2)
+                    .setName("Sirus")
+                    .setCaptainName("Harold Burr")
+                    .setType(petrolier)
+                    .build();
+        }
     }
 
     public void goToShipList(View view) {

@@ -50,9 +50,7 @@ public class ModifShip extends AppCompatActivity {
         bateau.setLongitude(Float.parseFloat(longitude));
 
         bateau.setPort(ListPort.searchPortByName(portSpinner.getSelectedItem().toString()));
-        Intent intent = new Intent(ModifShip.this, DetailsShipActivity.class);
-        intent.putExtra("Bateau", bateau);
-        startActivity(intent);
+        finish();
     }
 
     public void cancel (View view) {

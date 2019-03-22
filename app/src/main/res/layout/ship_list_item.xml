@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="Ship Name"
         android:textSize="24sp"
-        android:textColor="#000055" />
+        android:textColor="@color/TexteAffichageBateau" />
 
     <TextView
         android:id="@+id/captainName"
@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:text="Captain Name"
         android:textSize="18sp"
-        android:textColor="#000055" />
+        android:textColor="@color/TexteAffichageBateau"/>
 
 </LinearLayout>

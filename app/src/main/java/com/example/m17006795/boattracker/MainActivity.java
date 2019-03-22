@@ -72,6 +72,18 @@ public class MainActivity extends AppCompatActivity {
                 .setLatitude(43.295175)
                 .setLongitude(5.372672)
                 .build();
+        new PortBuilder()
+                .setId(0)
+                .setName("Le Havre")
+                .setLatitude(49.4938)
+                .setLongitude(0.1077)
+                .build();
+        new PortBuilder()
+                .setId(0)
+                .setName("Port de Hong Kong")
+                .setLatitude(22.333332)
+                .setLongitude(114.1166662)
+                .build();
 
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 
@@ -89,12 +101,14 @@ public class MainActivity extends AppCompatActivity {
                     .setName("Ursa Minor")
                     .setCaptainName("John Quincy Adams")
                     .setType(petrolier)
+                    .setPort("Vieux-Port")
                     .build();
             new ContainerShipBuilder()
                     .setId(2)
                     .setName("Sirus")
                     .setCaptainName("Harold Burr")
                     .setType(petrolier)
+                    .setPort("Port de Hong Kong")
                     .build();
         }
     }

@@ -1,6 +1,7 @@
 package com.example.m17006795.boattracker;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,10 +29,15 @@ public class ShipListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent details = new Intent(ShipListActivity.this, DetailsShipActivity.class);
                 details.putExtra("Bateau", shipAdapter.getItem(position));
-                startActivity(details);
+                startActivityForResult(details, 0);
             }
         });
 
         listView.setAdapter(shipAdapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        recreate();
     }
 }

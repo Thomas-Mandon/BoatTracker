@@ -31,7 +31,7 @@ public class ShipAdapter extends ArrayAdapter<ContainerShip> {
 
         // Populate the data into the template view using the data object
         shipName.setText(ship.getName());
-        captainName.setText(new StringBuilder("Captain : ").append(ship.getCaptainName()));
+        captainName.setText(new StringBuilder("Capitaine : ").append(ship.getCaptainName()));
 
         return convertView;
     }

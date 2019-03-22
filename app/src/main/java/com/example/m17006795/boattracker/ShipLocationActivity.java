@@ -48,13 +48,13 @@ public class ShipLocationActivity extends FragmentActivity implements OnMapReady
         for (ContainerShip chaqueBateau : ContainerShip.getShips()) {
             //Marqueur bateau. "chaqueBateau" représente chacun des bateaux de la liste des bateaux
             LatLng posBateau = new LatLng(chaqueBateau.getLatitude(), chaqueBateau.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(posBateau).title(bateau.getName()));
+            mMap.addMarker(new MarkerOptions().position(posBateau).title("Bateau : " + chaqueBateau.getName()));
         }
 
         for (Port chaquePort : ListPort.getListPort()) {
             //Marqueur port. Même principe pour "chaquePort" et la liste des ports.
             LatLng posPort = new LatLng(chaquePort.getLatitude(), chaquePort.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(posPort).title("Port d'origine : " + chaquePort.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+            mMap.addMarker(new MarkerOptions().position(posPort).title("Port : " + chaquePort.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         }
 
         LatLng posBateauAffiche = new LatLng(bateau.getLatitude(), bateau.getLongitude());

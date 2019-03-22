@@ -61,6 +61,19 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        new PortBuilder()
+                .setId(0)
+                .setName("Pearl Harbor")
+                .setLatitude(21.339884)
+                .setLongitude(-157.970901)
+                .build();
+        new PortBuilder()
+                .setId(0)
+                .setName("Vieux-Port")
+                .setLatitude(43.295175)
+                .setLongitude(5.372672)
+                .build();
+
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 
         new ContainerShipBuilder().setName("La Voix")
@@ -69,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .setType(petrolier)
                 .setLatitude(3.66f)
                 .setLongitude(3.66f)
-                .setPort(new Port(0, "Pearl Harbor", 14.2f, 12.6f))
+                .setPort("Pearl Harbor")
                 .build();
         new ContainerShipBuilder()
                 .setId(1)

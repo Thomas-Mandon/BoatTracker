@@ -1,6 +1,7 @@
 package com.example.m17006795.boattracker;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,17 +14,18 @@ import java.util.Locale;
 public class DetailsShipActivity extends AppCompatActivity {
 
     private ContainerShip bateau;
+    private ContainerShip bateauTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailship);
-        bateau = (ContainerShip) getIntent().getSerializableExtra("Bateau");
+        bateauTemp = (ContainerShip) getIntent().getSerializableExtra("Bateau");
+        bateau = bateauTemp.searchShip(bateauTemp);
         creationDetails();
     }
 
     public void creationDetails () {
-
         ((TextView) findViewById(R.id.shipName)).setText(new StringBuilder("Nom : ").append(bateau.getName()));
         ((TextView) findViewById(R.id.shipType)).setText(new StringBuilder("Type : ").append(bateau.getType().getName()));
         ((TextView) findViewById(R.id.shipCapitaine)).setText(new StringBuilder("Capitaine : ").append(bateau.getCaptainName()));
@@ -44,10 +46,7 @@ public class DetailsShipActivity extends AppCompatActivity {
             Double distance = distance(bateau.getLatitude(), bateau.getPort().getLatitude(), bateau.getLongitude(), bateau.getPort().getLongitude());
             Toast toast = Toast.makeText(DetailsShipActivity.this, String.format(Locale.getDefault(), "%.2f", distance) + " km", Toast.LENGTH_SHORT);
             toast.show();
-
         }
-
-
     }
 
     public static double distance(double lat1, double lat2, double lon1, double lon2) {
@@ -66,12 +65,17 @@ public class DetailsShipActivity extends AppCompatActivity {
     public void goToModifShip(View view) {
         Intent intent = new Intent(this, ModifShip.class);
         intent.putExtra("Bateau",bateau);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
 
     public void goToMap(View view) {
         Intent intent = new Intent(this, ShipLocationActivity.class);
         intent.putExtra("Bateau", bateau);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        recreate();
     }
 }

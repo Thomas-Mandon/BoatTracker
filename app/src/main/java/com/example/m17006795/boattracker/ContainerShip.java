@@ -1,7 +1,12 @@
 package com.example.m17006795.boattracker;
 
+import android.support.v4.util.ArrayMap;
+
+import com.google.protobuf.Any;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ContainerShip implements Serializable {
     private static ArrayList<ContainerShip> listShips = new ArrayList<>();
@@ -95,5 +100,12 @@ public class ContainerShip implements Serializable {
                 return cs;
 
         return ship;
+    }
+
+    public ArrayMap<String, String> createMap() {
+        ArrayMap<String, String> map = new ArrayMap<>();
+         map.put("name", this.name);
+         map.put ("captainName", this.captainName);
+         return  map;
     }
 }

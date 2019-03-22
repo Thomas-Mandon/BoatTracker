@@ -74,4 +74,15 @@ public class DetailsShipActivity extends AppCompatActivity {
         intent.putExtra("Bateau", bateau);
         startActivity(intent);
     }
+
+    public void createShip (View view) {
+
+        ContainerShipBuilder shipToCreate = new ContainerShipBuilder();
+        shipToCreate.setId(bateau.getId());
+        shipToCreate.setName(bateau.getName());
+        shipToCreate.setCaptainName(bateau.getCaptainName());
+        ShipBase.getBateauxCollection().document("zgVwodJIZIRXEEzq0ejQ ").set(shipToCreate);
+        System.out.println("salut");
+
+    }
 }

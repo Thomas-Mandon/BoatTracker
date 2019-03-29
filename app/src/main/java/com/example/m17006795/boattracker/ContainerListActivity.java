@@ -1,11 +1,11 @@
-/*package com.example.m17006795.boattracker;
+package com.example.m17006795.boattracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContainerListActivity extends AppCompatActivity{
+public class ContainerListActivity extends AppCompatActivity {
     private ContainerShip bateau;
     private ContainerShip bateauTemp;
 
@@ -29,5 +29,5 @@ public class ContainerListActivity extends AppCompatActivity{
             else
                 cpt += 1;
         }
+    }
 }
-*/

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Log.d(TAG, "Bateaux : " + document.getData());
+                                Log.d(TAG, "Bateau : " + document.getData());
                             }
                         } else {
                             Log.w(TAG, "No such document", task.getException());
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document2 : task.getResult()) {
 
-                                Log.d(TAG, "Ports : " + document2.getData());
+                                Log.d(TAG, "Port : " + document2.getData());
                             }
                         }
                         else {

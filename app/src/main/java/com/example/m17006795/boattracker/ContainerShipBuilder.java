@@ -1,5 +1,7 @@
 package com.example.m17006795.boattracker;
 
+import java.util.ArrayList;
+
 public class ContainerShipBuilder {
     private int id = 0;
     private String name = "";
@@ -8,7 +10,7 @@ public class ContainerShipBuilder {
     private float longitude = 0;
     private String namePort = "null";
     private ContainerShipType type = new ContainerShipType(0, "", 0, 0, 0);
-    private Container[] containers = new Container[50];
+    private ArrayList<Container> containers = new ArrayList<>();
 
     public ContainerShip build() {
         return new ContainerShip(id, name, captainName, latitude, longitude, namePort, type, containers);
@@ -49,8 +51,8 @@ public class ContainerShipBuilder {
         return this;
     }
 
-    public ContainerShipBuilder setContainers(Container[] containers) {
-        this.containers = containers;
+    public ContainerShipBuilder setContainers(Container c) {
+        this.containers.add(c);
         return this;
     }
 }

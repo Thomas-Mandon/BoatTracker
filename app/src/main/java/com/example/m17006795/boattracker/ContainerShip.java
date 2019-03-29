@@ -18,19 +18,19 @@ public class ContainerShip implements Serializable {
     private float longitude;
     private Port port;
     private ContainerShipType type;
-    private Container[] containers;
+    private ArrayList<Container> containers;
 
-    public ContainerShip(int id, String name, String captainName, float latitude, float longitude, String namePort, ContainerShipType type, Container[] containers) {
+    public ContainerShip(int id, String name, String captainName, float latitude, float longitude, String namePort, ContainerShipType type, ArrayList<Container> containers) {
         this.id = id;
         this.name = name;
         this.captainName = captainName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.type = type;
-        this.containers = containers;
 
         this.port = ListPort.searchPortByName(namePort);
 
+        this.containers = containers;
         listShips.add(this);
     }
 
@@ -94,8 +94,14 @@ public class ContainerShip implements Serializable {
         return id;
     }
 
-    public Container[] getContainers() {
+    public ArrayList<Container> getContainers() {
+        for (Container c : containers)
+            System.out.println("TEST");
         return containers;
+    }
+
+    public void addContainer (Container c) {
+        containers.add(c);
     }
 
     public ContainerShip searchShip (ContainerShip ship) {

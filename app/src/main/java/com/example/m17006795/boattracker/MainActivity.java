@@ -67,7 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-
+        Container c1 = new Container(0,5,5,5);
+        Container c2 = new Container(1,6,6,6);
+        Container c3 = new Container(2,68,68,68);
         new PortBuilder()
                 .setId(0)
                 .setName("Pearl Harbor")
@@ -103,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setLatitude(3.66f)
                     .setLongitude(3.66f)
                     .setPort("Pearl Harbor")
+                    .setContainers(c1)
+                    .setContainers(c2)
                     .build();
             new ContainerShipBuilder()
                     .setId(1)
@@ -110,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setCaptainName("John Quincy Adams")
                     .setType(petrolier)
                     .setPort("Vieux-Port")
+                    .setContainers(c3)
                     .build();
             new ContainerShipBuilder()
                     .setId(2)
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setType(petrolier)
                     .setPort("Port de Hong Kong")
                     .build();
+
         }
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);

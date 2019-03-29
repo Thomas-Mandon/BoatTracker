@@ -77,7 +77,7 @@ public class DetailsShipActivity extends AppCompatActivity {
     public void goToContainerListActivity(View view) {
         Intent intent = new Intent(this, ContainerListActivity.class);
         intent.putExtra("Bateau", bateau);
-        startActivity(intent);
+        startActivityForResult(intent,0);
     }
 
     public void createShip (View view) {

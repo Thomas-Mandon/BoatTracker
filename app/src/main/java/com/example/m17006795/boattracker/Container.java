@@ -14,4 +14,20 @@ public class Container implements Serializable {
         this.height = height;
         this.width = width;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 }

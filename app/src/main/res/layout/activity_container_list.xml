@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/portSpinner2"
+        android:id="@+id/containerSpinner"
         android:layout_width="204dp"
         android:layout_height="35dp"
         android:layout_marginStart="152dp"

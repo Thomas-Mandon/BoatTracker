@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Boat Tracker</string>
     <string name="title_activity_boat_location">Map</string>
+    <string name="connected_text_content">Connecté : %1$s</string>
 </resources>

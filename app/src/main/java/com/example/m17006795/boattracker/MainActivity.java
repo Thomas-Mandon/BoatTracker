@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Map;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final ArrayAdapter<ContainerShip> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ContainerShip.getShips());
+
+        //set adapter pour shiplist
+
         firestore.collection("bateaux")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -50,11 +56,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Log.d(TAG, "Bateau : " + document.getData());
+                                Log.d(TAG,  "Bateau : " + document.getData());
                             }
                         } else {
                             Log.w(TAG, "No such document", task.getException());
                         }
+                        arrayAdapter.notifyDataSetChanged();
                     }
                 });
 
@@ -75,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
 
-        Port pearlHarbor = new PortBuilder()
+        /*Port pearlHarbor = new PortBuilder()
                             .setId(0)
                             .setName("Pearl Harbor")
                             .setLatitude(21.339884)
@@ -106,10 +113,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             .setLongitude(114.1166662)
                             .build();
         //database.addPort(firestore, hongKong);
+        */
 
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 
-        if (ContainerShip.getShips().isEmpty()) {
+        /*if (ContainerShip.getShips().isEmpty()) {
             ContainerShip LaVoix = new ContainerShipBuilder().setName("La Voix")
                                     .setId(0)
                                     .setCaptainName("John Adams")
@@ -137,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 .setPort("Port de Hong Kong")
                                 .build();
             //addContainerShip(firestore, Sirus);
-        }
+        }*/
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         signedInCheck();

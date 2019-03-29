@@ -26,7 +26,7 @@ public class DetailsShipActivity extends AppCompatActivity {
     }
 
     public void creationDetails () {
-        ((TextView) findViewById(R.id.shipName)).setText(new StringBuilder("Nom : ").append(bateau.getName()));
+        ((TextView) findViewById(R.id.containerID)).setText(new StringBuilder("Nom : ").append(bateau.getName()));
         ((TextView) findViewById(R.id.shipType)).setText(new StringBuilder("Type : ").append(bateau.getType().getName()));
         ((TextView) findViewById(R.id.shipCapitaine)).setText(new StringBuilder("Capitaine : ").append(bateau.getCaptainName()));
         ((TextView) findViewById(R.id.shipPosition)).setText(new StringBuilder("Position: latitude ").append(bateau.getLatitude()).append(" et longitude ").append(bateau.getLongitude()));
@@ -70,6 +70,12 @@ public class DetailsShipActivity extends AppCompatActivity {
 
     public void goToMap(View view) {
         Intent intent = new Intent(this, ShipLocationActivity.class);
+        intent.putExtra("Bateau", bateau);
+        startActivity(intent);
+    }
+
+    public void goToContainerListActivity(View view) {
+        Intent intent = new Intent(this, ContainerListActivity.class);
         intent.putExtra("Bateau", bateau);
         startActivity(intent);
     }

@@ -7,7 +7,7 @@
     tools:context=".DetailsShipActivity">
 
     <TextView
-        android:id="@+id/shipName"
+        android:id="@+id/containerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,7 +30,7 @@
         android:textColor="@color/TexteAffichageBateau"
         android:textSize="31sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shipName" />
+        app:layout_constraintTop_toBottomOf="@+id/containerID" />
 
     <TextView
         android:id="@+id/shipCapitaine"
@@ -72,9 +72,10 @@
         android:text="Ajouter a la base"
         app:layout_constraintBottom_toTopOf="@+id/calculDistance"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.962" />
 
     <Button
         android:id="@+id/calculDistance"
@@ -90,9 +91,10 @@
         android:text="Calcul Distance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shipPosition"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintVertical_bias="0.532" />
 
     <Button
         android:id="@+id/voirCarte"
@@ -108,9 +110,10 @@
         android:text="Voir position"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculDistance"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toEndOf="@+id/calculDistance"
+        app:layout_constraintTop_toBottomOf="@+id/ContainerList"
+        app:layout_constraintVertical_bias="0.087" />
 
     <Button
         android:id="@+id/Modifier"
@@ -126,9 +129,29 @@
         android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voirCarte"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintTop_toBottomOf="@+id/calculDistance"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <Button
+        android:id="@+id/ContainerList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="goToContainerListActivity"
+        android:text="Conteneurs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toEndOf="@+id/createShip"
+        app:layout_constraintTop_toBottomOf="@+id/shipPosition"
+        app:layout_constraintVertical_bias="0.276" />
 
 
 </android.support.constraint.ConstraintLayout>

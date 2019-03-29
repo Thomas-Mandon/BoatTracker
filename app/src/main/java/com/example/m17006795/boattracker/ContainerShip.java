@@ -95,11 +95,26 @@ public class ContainerShip implements Serializable {
         return id;
     }
 
+    public Container[] getContainers() {
+        return containers;
+    }
+
     public ContainerShip searchShip (ContainerShip ship) {
         for (ContainerShip cs : listShips)
             if (ship.getId() == cs.getId())
                 return cs;
 
         return ship;
+    }
+
+    public ArrayMap<String, String> createMap() {
+        ArrayMap<String, String> map = new ArrayMap<>();
+         map.put("name", this.name);
+         map.put ("captainName", this.captainName);
+         return  map;
+    }
+
+    public void moveContainerOnOtherShip (Container container, ContainerShip bateauDestination) {
+
     }
 }

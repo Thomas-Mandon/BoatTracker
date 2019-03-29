@@ -9,6 +9,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class ShipLocationActivity extends FragmentActivity implements OnMapReady
         }
 
         LatLng posBateauAffiche = new LatLng(bateau.getLatitude(), bateau.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(posBateauAffiche));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posBateauAffiche, 5));
 
     }
 }

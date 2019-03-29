@@ -3,13 +3,10 @@ package com.example.m17006795.boattracker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextPaint;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +24,7 @@ public class ModifShip extends AppCompatActivity {
 
         //On Cherche le bateau passé en paramètre dans la liste afin de récupérer le vrai bateau dans la liste.
         bateauTemp = (ContainerShip) getIntent().getSerializableExtra("Bateau");
-        bateau = bateauTemp.searchShip(bateauTemp);
+        bateau = bateauTemp.searchShipId(bateauTemp);
         createActivity();
     }
 

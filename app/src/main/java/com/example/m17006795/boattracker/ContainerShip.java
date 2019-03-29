@@ -1,5 +1,6 @@
 package com.example.m17006795.boattracker;
 
+import android.content.Intent;
 import android.support.v4.util.ArrayMap;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -96,8 +97,6 @@ public class ContainerShip implements Serializable {
     }
 
     public ArrayList<Container> getContainers() {
-        for (Container c : containers)
-            System.out.println("TEST");
         return containers;
     }
 
@@ -105,12 +104,32 @@ public class ContainerShip implements Serializable {
         containers.add(c);
     }
 
-    public ContainerShip searchShip (ContainerShip ship) {
+    public void removeContainer (Container c) {
+        containers.remove(c);
+    }
+
+    public Container searchContainerId(int id) {
+        for (Container c : this.getContainers())
+            if (id == c.getId())
+                return c;
+
+        return null;
+    }
+
+    public static ContainerShip searchShipId(ContainerShip ship) {
         for (ContainerShip cs : listShips)
             if (ship.getId() == cs.getId())
                 return cs;
 
         return ship;
+    }
+
+    public static ContainerShip searchShipName(String name) {
+        for (ContainerShip cs : listShips)
+            if (name == cs.getName())
+                return cs;
+
+        return null;
     }
 
     public ArrayMap<String, String> createMap() {
@@ -120,7 +139,4 @@ public class ContainerShip implements Serializable {
          return  map;
     }
 
-    public void moveContainerOnOtherShip (Container container, ContainerShip bateauDestination) {
-
-    }
 }

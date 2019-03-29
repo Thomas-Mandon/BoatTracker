@@ -21,7 +21,7 @@ public class DetailsShipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailship);
         bateauTemp = (ContainerShip) getIntent().getSerializableExtra("Bateau");
-        bateau = bateauTemp.searchShip(bateauTemp);
+        bateau = bateauTemp.searchShipId(bateauTemp);
         creationDetails();
     }
 
@@ -74,10 +74,10 @@ public class DetailsShipActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToContainerListActivity(View view) {
-        Intent intent = new Intent(this, ContainerListActivity.class);
+    public void goToContainerMoveActivity(View view) {
+        Intent intent = new Intent(this, ContainerMoveActivity.class);
         intent.putExtra("Bateau", bateau);
-        startActivityForResult(intent,0);
+        startActivityForResult(intent, 0);
     }
 
     public void createShip (View view) {

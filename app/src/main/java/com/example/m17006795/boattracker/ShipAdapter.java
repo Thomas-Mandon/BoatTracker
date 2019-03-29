@@ -26,7 +26,7 @@ public class ShipAdapter extends ArrayAdapter<ContainerShip> {
         }
 
         // Lookup view for data population
-        TextView shipName = (TextView) convertView.findViewById(R.id.shipName);
+        TextView shipName = (TextView) convertView.findViewById(R.id.containerID);
         TextView captainName = (TextView) convertView.findViewById(R.id.captainName);
 
         // Populate the data into the template view using the data object

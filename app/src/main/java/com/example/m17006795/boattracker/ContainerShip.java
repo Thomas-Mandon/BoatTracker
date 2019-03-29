@@ -2,6 +2,7 @@ package com.example.m17006795.boattracker;
 
 import android.support.v4.util.ArrayMap;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.protobuf.Any;
 
 import java.io.Serializable;
@@ -100,12 +101,5 @@ public class ContainerShip implements Serializable {
                 return cs;
 
         return ship;
-    }
-
-    public ArrayMap<String, String> createMap() {
-        ArrayMap<String, String> map = new ArrayMap<>();
-         map.put("name", this.name);
-         map.put ("captainName", this.captainName);
-         return  map;
     }
 }

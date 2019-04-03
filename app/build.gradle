@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'alias'
+            keyPassword 'password'
+            storeFile file('/amuhome/j17004228/.keystore')
+            storePassword 'mystorepassword'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.m17006795.boattracker"
@@ -21,7 +29,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'

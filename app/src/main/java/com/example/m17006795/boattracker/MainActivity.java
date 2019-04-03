@@ -44,31 +44,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // final ArrayAdapter<ContainerShip> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ContainerShip.getShips());
-
-        //set adapter pour shiplist
-
         firestore.collection("bateaux")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                Log.d(TAG,  "Bateau : " + document.getData());
-                                //Log.d (TAG, (String)document.get("latitude"));
-                                ContainerShip containerShip = new ContainerShipBuilder()
-                                        .setCaptainName((String)document.get("captainName"))
-                                        .setName((String)document.get("name"))
-                                        .setLatitude(((Number) document.get("latitude")).floatValue())
-                                        .setLongitude(((Number) document.get("longitude")).floatValue())
-                                        .build();
+                        try {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    new ContainerShipBuilder()
+                                            .setId(((Number)document.get("id")).intValue())
+                                            .setCaptainName((String) document.get("captainName"))
+                                            .setName((String) document.get("name"))
+                                            .setLatitude(((Number) document.get("latitude")).floatValue())
+                                            .setLongitude(((Number) document.get("longitude")).floatValue())
+                                            .build();
+                                }
+                            } else {
+                                Log.w(TAG, "No such document", task.getException());
                             }
-                        } else {
-                            Log.w(TAG, "No such document", task.getException());
                         }
-                        //arrayAdapter.notifyDataSetChanged();
+                        catch (NullPointerException n) {
+                            n.getMessage();
+                        }
                     }
                 });
 
@@ -81,6 +79,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             for (QueryDocumentSnapshot document2 : task.getResult()) {
 
                                 Log.d(TAG, "Port : " + document2.getData());
+                                new PortBuilder()
+                                        .setId(((Number)document2.get("id")).intValue())
+                                        .setName((String)document2.get("name"))
+                                        .setLongitude(((Number) document2.get("longitude")).floatValue())
+                                        .setLatitude(((Number) document2.get("latitude")).floatValue())
+                                        .build();
                             }
                         }
                         else {
@@ -126,36 +130,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         */
 
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
-
-        /*if (ContainerShip.getShips().isEmpty()) {
-            ContainerShip LaVoix = new ContainerShipBuilder().setName("La Voix")
-                                    .setId(0)
-                                    .setCaptainName("John Adams")
-                                    .setType(petrolier)
-                                    .setLatitude(3.66f)
-                                    .setLongitude(3.66f)
-                                    .setPort("Pearl Harbor")
-                                    .build();
-            //addContainerShip(firestore, LaVoix);
-
-            ContainerShip UrsaMinor = new ContainerShipBuilder()
-                                        .setId(1)
-                                        .setName("Ursa Minor")
-                                        .setCaptainName("John Quincy Adams")
-                                        .setType(petrolier)
-                                        .setPort("Vieux-Port")
-                                        .build();
-            //addContainerShip(firestore, UrsaMinor);
-
-            ContainerShip Sirus = new ContainerShipBuilder()
-                                .setId(2)
-                                .setName("Sirus")
-                                .setCaptainName("Harold Burr")
-                                .setType(petrolier)
-                                .setPort("Port de Hong Kong")
-                                .build();
-            //addContainerShip(firestore, Sirus);
-        }*/
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         signedInCheck();

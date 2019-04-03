@@ -8,12 +8,12 @@ public class ContainerShipBuilder {
     private String captainName = "";
     private float latitude = 0;
     private float longitude = 0;
-    private String namePort = "null";
+    private Port port = new Port(0,"Port_par_defaut",0,0);
     private ContainerShipType type = new ContainerShipType(0, "", 0, 0, 0);
     private ArrayList<Container> containers = new ArrayList<>();
 
     public ContainerShip build() {
-        return new ContainerShip(id, name, captainName, latitude, longitude, namePort, type, containers);
+        return new ContainerShip(id, name, captainName, latitude, longitude, port, type, containers);
     }
 
     public ContainerShipBuilder setId(int id) {
@@ -41,8 +41,8 @@ public class ContainerShipBuilder {
         return this;
     }
 
-    public ContainerShipBuilder setPort(String namePort) {
-        this.namePort = namePort;
+    public ContainerShipBuilder setPort(Port namePort) {
+        this.port = namePort;
         return this;
     }
 

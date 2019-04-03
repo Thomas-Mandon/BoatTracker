@@ -22,7 +22,7 @@ public class ContainerShip implements Serializable {
     private ContainerShipType type;
     private ArrayList<Container> containers;
 
-    public ContainerShip(int id, String name, String captainName, float latitude, float longitude, String namePort, ContainerShipType type, ArrayList<Container> containers) {
+    public ContainerShip(int id, String name, String captainName, float latitude, float longitude, Port port, ContainerShipType type, ArrayList<Container> containers) {
         this.id = id;
         this.name = name;
         this.captainName = captainName;
@@ -30,7 +30,7 @@ public class ContainerShip implements Serializable {
         this.longitude = longitude;
         this.type = type;
 
-        this.port = ListPort.searchPortByName(namePort);
+        this.port = port;
 
         this.containers = containers;
         listShips.add(this);

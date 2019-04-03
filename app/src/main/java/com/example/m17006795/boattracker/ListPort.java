@@ -9,9 +9,9 @@ public class ListPort {
         return listPort;
     }
 
-    public static Port searchPortByName (String NamePort) {
+    public static Port searchPortByName (String namePort) {
         for (Port p : listPort)
-            if (p.getName() == NamePort)
+            if (p.getName().equals(namePort))
                 return p;
 
         return null;

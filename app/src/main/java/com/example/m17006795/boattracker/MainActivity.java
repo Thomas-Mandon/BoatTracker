@@ -44,32 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firestore.collection("bateaux")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        try {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    new ContainerShipBuilder()
-                                            .setId(((Number)document.get("id")).intValue())
-                                            .setCaptainName((String) document.get("captainName"))
-                                            .setName((String) document.get("name"))
-                                            .setLatitude(((Number) document.get("latitude")).floatValue())
-                                            .setLongitude(((Number) document.get("longitude")).floatValue())
-                                            .build();
-                                }
-                            } else {
-                                Log.w(TAG, "No such document", task.getException());
-                            }
-                        }
-                        catch (NullPointerException n) {
-                            n.getMessage();
-                        }
-                    }
-                });
-
         firestore.collection("ports")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -79,16 +53,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             for (QueryDocumentSnapshot document2 : task.getResult()) {
 
                                 Log.d(TAG, "Port : " + document2.getData());
+                                Log.d(TAG, Integer.toString(ListPort.getListPort().size()));
                                 new PortBuilder()
                                         .setId(((Number)document2.get("id")).intValue())
                                         .setName((String)document2.get("name"))
                                         .setLongitude(((Number) document2.get("longitude")).floatValue())
                                         .setLatitude(((Number) document2.get("latitude")).floatValue())
                                         .build();
+                                Log.d(TAG, Integer.toString(ListPort.getListPort().size()));
                             }
                         }
                         else {
                             Log.w(TAG, "No such document", task.getException());
+                        }
+                    }
+                });
+
+
+        firestore.collection("bateaux")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        try {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ContainerShip bateau = new ContainerShipBuilder()
+                                            .setId(((Number)document.get("id")).intValue())
+                                            .setCaptainName((String) document.get("captainName"))
+                                            .setName((String) document.get("name"))
+                                            .setLatitude(((Number) document.get("latitude")).floatValue())
+                                            .setLongitude(((Number) document.get("longitude")).floatValue())
+                                            .setPort(ListPort.searchPortByName((String)document.get("nomPort")))
+                                            .build();
+                                    Log.d (TAG, ListPort.searchPortByName((String)document.get("nomPort")) == null ? "Null" : ListPort.searchPortByName((String)document.get("nomPort")).getName());
+                                }
+                            } else {
+                                Log.w(TAG, "No such document", task.getException());
+                            }
+                        }
+                        catch (NullPointerException n) {
+                            n.getMessage();
                         }
                     }
                 });

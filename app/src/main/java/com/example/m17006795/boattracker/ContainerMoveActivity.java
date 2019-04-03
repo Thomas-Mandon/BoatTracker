@@ -34,8 +34,8 @@ public class ContainerMoveActivity extends AppCompatActivity {
 
     public void createActivity() {
         containerSpinner = findViewById(R.id.containerSpinner);
-        System.out.println("TEST");
         containerSpinnerConfiguration();
+        bateauxSpinner = findViewById(R.id.bateauxSpinner);
         bateauxSpinnerConfiguration();
     }
 
@@ -54,15 +54,18 @@ public class ContainerMoveActivity extends AppCompatActivity {
         List<String> listBateauxSpinner = new ArrayList<>();
         for (ContainerShip c : ContainerShip.getShips()) {
             if (ShipUnder300m(c))
-                listBateauxSpinner.add(Integer.toString(c.getId()));
+                listBateauxSpinner.add(c.getName());
         }
-
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listBateauxSpinner);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bateauxSpinner.setAdapter(dataAdapter);
     }
 
     public boolean ShipUnder300m (ContainerShip bateauCible) {
+
+        System.out.println("Distance entre les bateaux " + DetailsShipActivity.distance(bateau.getLatitude(), bateau.getLongitude(), bateauCible.getLatitude(), bateauCible.getLongitude()));
+        System.out.println("Bateau 1 : " + bateau.getLatitude() + " " + bateau.getLongitude());
+        System.out.println("Bateau 2 : " + bateauCible.getLatitude() + " " + bateauCible.getLongitude());
         if (DetailsShipActivity.distance(bateau.getLatitude(), bateau.getLongitude(), bateauCible.getLatitude(), bateauCible.getLongitude()) <= 0.3)
             return true;
         else
@@ -70,7 +73,8 @@ public class ContainerMoveActivity extends AppCompatActivity {
     }
 
     public void valider (View view) { //Enregistrement des valeurs dans le bateau.
-        containerCible = bateau.searchContainerId(containerSpinner.getId()); //On récuppère le container
+        int containerID = Integer.parseInt(containerSpinner.getSelectedItem().toString());
+        containerCible = bateau.searchContainerId(containerID); //On récuppère le container
         bateauCible = ContainerShip.searchShipName(bateauxSpinner.getSelectedItem().toString()); // on Récupppère le bateau ciblé
         bateauCible.addContainer(containerCible);
         bateau.removeContainer(containerCible);

@@ -101,7 +101,8 @@ public class ContainerShip implements Serializable {
     }
 
     public void addContainer (Container c) {
-        containers.add(c);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + c.getId());
+        this.containers.add(c);
     }
 
     public void removeContainer (Container c) {
@@ -111,6 +112,14 @@ public class ContainerShip implements Serializable {
     public Container searchContainerId(int id) {
         for (Container c : this.getContainers())
             if (id == c.getId())
+                return c;
+
+        return null;
+    }
+
+    public Container searchContainer(Container container) {
+        for (Container c : this.getContainers())
+            if (container.getId() == c.getId())
                 return c;
 
         return null;

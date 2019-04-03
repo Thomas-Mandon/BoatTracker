@@ -37,104 +37,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
-    Database database = new Database();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firestore.collection("ports")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document2 : task.getResult()) {
+        new Port(0,"Port_par_defaut",0,0);
 
-                                Log.d(TAG, "Port : " + document2.getData());
-                                Log.d(TAG, Integer.toString(ListPort.getListPort().size()));
-                                new PortBuilder()
-                                        .setId(((Number)document2.get("id")).intValue())
-                                        .setName((String)document2.get("name"))
-                                        .setLongitude(((Number) document2.get("longitude")).floatValue())
-                                        .setLatitude(((Number) document2.get("latitude")).floatValue())
-                                        .build();
-                                Log.d(TAG, Integer.toString(ListPort.getListPort().size()));
-                            }
-                        }
-                        else {
-                            Log.w(TAG, "No such document", task.getException());
-                        }
-                    }
-                });
+        getPorts();
 
-
-        firestore.collection("bateaux")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        try {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    ContainerShip bateau = new ContainerShipBuilder()
-                                            .setId(((Number)document.get("id")).intValue())
-                                            .setCaptainName((String) document.get("captainName"))
-                                            .setName((String) document.get("name"))
-                                            .setLatitude(((Number) document.get("latitude")).floatValue())
-                                            .setLongitude(((Number) document.get("longitude")).floatValue())
-                                            .setPort(ListPort.searchPortByName((String)document.get("nomPort")))
-                                            .build();
-                                    Log.d (TAG, ListPort.searchPortByName((String)document.get("nomPort")) == null ? "Null" : ListPort.searchPortByName((String)document.get("nomPort")).getName());
-                                }
-                            } else {
-                                Log.w(TAG, "No such document", task.getException());
-                            }
-                        }
-                        catch (NullPointerException n) {
-                            n.getMessage();
-                        }
-                    }
-                });
         Container c1 = new Container(0,5,5,5);
         Container c2 = new Container(1,6,6,6);
         Container c3 = new Container(2,68,68,68);
-
-        /*Port pearlHarbor = new PortBuilder()
-                .setId(0)
-                .setName("Pearl Harbor")
-                .setLatitude(21.339884)
-                .setLongitude(-157.970901)
-                .build();
-        //database.addPort(firestore, pearlHarbor);
-
-        Port vieuxPort = new PortBuilder()
-                .setId(0)
-                .setName("Vieux-Port")
-                .setLatitude(43.295175)
-                .setLongitude(5.372672)
-                .build();
-        //database.addPort(firestore, vieuxPort);
-
-        Port leHavre = new PortBuilder()
-                .setId(0)
-                .setName("Le Havre")
-                .setLatitude(49.4938)
-                .setLongitude(0.1077)
-                .build();
-        //database.addPort(firestore, leHavre);
-
-        Port hongKong = new PortBuilder()
-                .setId(0)
-                .setName("Port de Hong Kong")
-                .setLatitude(22.333332)
-                .setLongitude(114.1166662)
-                .build();
-        //database.addPort(firestore, hongKong);
-*/
-
-        ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         signedInCheck();
@@ -220,5 +135,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             signOutButton.setVisibility(View.GONE);
             connectedText.setVisibility(View.GONE);
         }
+    }
+
+    private void getPorts() {
+        firestore.collection("ports")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document2 : task.getResult()) {
+
+                                new PortBuilder()
+                                        .setId(((Number)document2.get("id")).intValue())
+                                        .setName((String)document2.get("name"))
+                                        .setLongitude(((Number) document2.get("longitude")).floatValue())
+                                        .setLatitude(((Number) document2.get("latitude")).floatValue())
+                                        .build();
+                            }
+                        }
+                        else {
+                            Log.w(TAG, "No such document", task.getException());
+                        }
+
+                        getBateaux();
+                    }
+                });
+    }
+
+    private void getBateaux() {
+        firestore.collection("bateaux")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        try {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    new ContainerShipBuilder()
+                                            .setId(((Number)document.get("id")).intValue())
+                                            .setCaptainName((String) document.get("captainName"))
+                                            .setName((String) document.get("name"))
+                                            .setLatitude(((Number) document.get("latitude")).floatValue())
+                                            .setLongitude(((Number) document.get("longitude")).floatValue())
+                                            .setPort(ListPort.searchPortByName((String)document.get("nomPort")))
+                                            .build();
+                                }
+                            } else {
+                                Log.w(TAG, "No such document", task.getException());
+                            }
+                        }
+                        catch (NullPointerException n) {
+                            n.getMessage();
+                        }
+                    }
+                });
     }
 }

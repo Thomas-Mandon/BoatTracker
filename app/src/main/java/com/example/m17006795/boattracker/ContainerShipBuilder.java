@@ -8,11 +8,12 @@ public class ContainerShipBuilder {
     private String captainName = "";
     private float latitude = 0;
     private float longitude = 0;
-    private Port port = new Port(0,"Port_par_defaut",0,0);
+    private Port port;
     private ContainerShipType type = new ContainerShipType(0, "", 0, 0, 0);
     private ArrayList<Container> containers = new ArrayList<>();
 
     public ContainerShip build() {
+        if (port == null) port = ListPort.searchPortByName("Port_par_defaut");
         return new ContainerShip(id, name, captainName, latitude, longitude, port, type, containers);
     }
 

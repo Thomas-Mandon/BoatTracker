@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Locale;
 
 public class DetailsShipActivity extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class DetailsShipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailship);
         bateauTemp = (ContainerShip) getIntent().getSerializableExtra("Bateau");
-        bateau = bateauTemp.searchShipId(bateauTemp);
+        bateau = ContainerShip.searchShipId(bateauTemp);
         creationDetails();
     }
 
@@ -80,12 +82,7 @@ public class DetailsShipActivity extends AppCompatActivity {
     }
 
     public void createShip (View view) {
-        ContainerShipBuilder shipToCreate = new ContainerShipBuilder();
-        shipToCreate.setId(bateau.getId());
-        shipToCreate.setName(bateau.getName());
-        shipToCreate.setCaptainName(bateau.getCaptainName());
-        ShipBase.getBateauxCollection().document("zgVwodJIZIRXEEzq0ejQ ").set(shipToCreate);
-        System.out.println("salut");
+        FirebaseFirestore.getInstance().collection("bateaux").document(bateau.getName()).set(bateau.createMap());
 
     }
 

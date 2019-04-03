@@ -141,11 +141,19 @@ public class ContainerShip implements Serializable {
         return null;
     }
 
-    public ArrayMap<String, String> createMap() {
-        ArrayMap<String, String> map = new ArrayMap<>();
+    public ArrayMap<String, Object> createMap() {
+        ArrayMap<String, Object> map = new ArrayMap<>();
          map.put("name", this.name);
          map.put ("captainName", this.captainName);
+         map.put("id", id);
+         map.put("latitude", latitude);
+         map.put("longitude", longitude);
+         map.put("nomPort", port.getName());
          return  map;
+    }
+
+    public void maj () {
+        FirebaseFirestore.getInstance().collection("bateaux").document(this.getName()).update(createMap());
     }
 
 }

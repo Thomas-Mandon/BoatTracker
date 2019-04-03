@@ -47,6 +47,8 @@ public class ModifShip extends AppCompatActivity {
         bateau.setLongitude(Float.parseFloat(longitude));
 
         bateau.setPort(ListPort.searchPortByName(portSpinner.getSelectedItem().toString()));
+
+        bateau.maj();
         finish();
     }
 

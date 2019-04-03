@@ -30,7 +30,6 @@ public class DetailsShipActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.shipType)).setText(new StringBuilder("Type : ").append(bateau.getType().getName()));
         ((TextView) findViewById(R.id.shipCapitaine)).setText(new StringBuilder("Capitaine : ").append(bateau.getCaptainName()));
         ((TextView) findViewById(R.id.shipPosition)).setText(new StringBuilder("Position: latitude ").append(bateau.getLatitude()).append(" et longitude ").append(bateau.getLongitude()));
-
     }
 
     public void getDistance(View view) {
@@ -81,7 +80,6 @@ public class DetailsShipActivity extends AppCompatActivity {
     }
 
     public void createShip (View view) {
-
         ContainerShipBuilder shipToCreate = new ContainerShipBuilder();
         shipToCreate.setId(bateau.getId());
         shipToCreate.setName(bateau.getName());

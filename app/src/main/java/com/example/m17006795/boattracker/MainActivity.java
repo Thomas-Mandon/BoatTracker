@@ -102,37 +102,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Container c3 = new Container(2,68,68,68);
 
         /*Port pearlHarbor = new PortBuilder()
-                            .setId(0)
-                            .setName("Pearl Harbor")
-                            .setLatitude(21.339884)
-                            .setLongitude(-157.970901)
-                            .build();
+                .setId(0)
+                .setName("Pearl Harbor")
+                .setLatitude(21.339884)
+                .setLongitude(-157.970901)
+                .build();
         //database.addPort(firestore, pearlHarbor);
 
         Port vieuxPort = new PortBuilder()
-                            .setId(0)
-                            .setName("Vieux-Port")
-                            .setLatitude(43.295175)
-                            .setLongitude(5.372672)
-                            .build();
+                .setId(0)
+                .setName("Vieux-Port")
+                .setLatitude(43.295175)
+                .setLongitude(5.372672)
+                .build();
         //database.addPort(firestore, vieuxPort);
 
         Port leHavre = new PortBuilder()
-                            .setId(0)
-                            .setName("Le Havre")
-                            .setLatitude(49.4938)
-                            .setLongitude(0.1077)
-                            .build();
+                .setId(0)
+                .setName("Le Havre")
+                .setLatitude(49.4938)
+                .setLongitude(0.1077)
+                .build();
         //database.addPort(firestore, leHavre);
 
         Port hongKong = new PortBuilder()
-                            .setId(0)
-                            .setName("Port de Hong Kong")
-                            .setLatitude(22.333332)
-                            .setLongitude(114.1166662)
-                            .build();
+                .setId(0)
+                .setName("Port de Hong Kong")
+                .setLatitude(22.333332)
+                .setLongitude(114.1166662)
+                .build();
         //database.addPort(firestore, hongKong);
-        */
+*/
 
         ContainerShipType petrolier = new ContainerShipType(1, "petrolier", 140, 150, 200);
 

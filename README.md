@@ -5,7 +5,7 @@ Voici notre projet d'application mobile Android.
 - Damien Fontes
 - Deborah Jabes
 - Colin Joilan
-- Thomas Mandon
+- Thomas Mandon  
 _Étudiants en deuxième année de DUT Informatique_
 
 ## Instructions

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ArrayAdapter<ContainerShip> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ContainerShip.getShips());
+        // final ArrayAdapter<ContainerShip> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ContainerShip.getShips());
 
         //set adapter pour shiplist
 
@@ -57,11 +57,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 Log.d(TAG,  "Bateau : " + document.getData());
+                                //Log.d (TAG, (String)document.get("latitude"));
+                                ContainerShip containerShip = new ContainerShipBuilder()
+                                        .setCaptainName((String)document.get("captainName"))
+                                        .setName((String)document.get("name"))
+                                        .setLatitude(((Number) document.get("latitude")).floatValue())
+                                        .setLongitude(((Number) document.get("longitude")).floatValue())
+                                        .build();
                             }
                         } else {
                             Log.w(TAG, "No such document", task.getException());
                         }
-                        arrayAdapter.notifyDataSetChanged();
+                        //arrayAdapter.notifyDataSetChanged();
                     }
                 });
 
